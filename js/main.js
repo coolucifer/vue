@@ -5,7 +5,7 @@ var name = new Vue({
         age: null,
         sex: null
     }
-})
+});
 
 var vfor = new Vue({
     el: '#vfor',
@@ -27,7 +27,7 @@ var vfor = new Vue({
             },
         ]
     }
-})
+});
 
 var vbind = new Vue({
     el: '#vbind',
@@ -36,7 +36,7 @@ var vbind = new Vue({
         img: 'http://img.nga.cn/attachments/mon_201709/15/-jx594Q2h-3orKlToS3m-3m.png',
         isActive: true,
     }
-})
+});
 
 var von = new Vue({
     el: '#von',
@@ -59,7 +59,7 @@ var von = new Vue({
             console.log('敲回车');
         },
     }
-})
+});
 
 var compute = new Vue({
     el: '#compute',
@@ -84,4 +84,20 @@ var compute = new Vue({
             return Math.round(this.sum / 3);
         }
     }
-})
+});
+
+var alert_component= {
+    template:'<button @click="onClick">alert</button>',
+    methods:{
+        onClick:function(){
+            alert('alert');
+        }
+    }
+};
+
+new Vue({
+    el:'#segment',
+    components:{
+        alert:alert_component,
+    }
+});
