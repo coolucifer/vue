@@ -72,8 +72,13 @@ var compute = new Vue({
         sum: function () {
             // 如果有一栏为空则另两栏会变成字符串
             // return this.math + this.english + this.physics;
-
-            return parseFloat(this.math) + parseFloat(this.english) + parseFloat(this.physics);
+            var result=parseFloat(this.math) + parseFloat(this.english) + parseFloat(this.physics);
+            if(!isNaN(result)){
+                return result;
+            }
+            else{
+                alert('不能为空');
+            }
         },
         average: function () {
             return Math.round(this.sum / 3);
