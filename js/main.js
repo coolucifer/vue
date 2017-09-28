@@ -149,7 +149,7 @@ Vue.component('balance', {
     methods: {
         show_balance: function (data) {
             this.show = true;
-            console.log('data:',data);
+            console.log('data:', data);
         }
     },
     data: function () {
@@ -171,4 +171,41 @@ Vue.component('show', {
 })
 new Vue({
     el: '#balance'
+})
+
+// -----------平行组件通信------------
+var Event = new Vue();
+
+Vue.component('huahua', {
+    template: `<div>
+    我说:<input @keyup="on_change" v-model="i_said"/>
+    </div>`,
+    methods: {
+        on_change: function () {
+            Event.$emit('huahua-said', this.i_said);
+        }
+    },
+    data: function () {
+        return {
+            i_said: '',
+        };
+    },
+})
+Vue.component('shuandan', {
+    template: `<div>花花说:{{huahua_said}}</div>`,
+    data: function () {
+        return {
+            huahua_said: '',
+        };
+    },
+    mounted: function () {
+        me = this;
+        Event.$on('huahua-said', function (data) {
+            me.huahua_said = data;
+        })
+    }
+})
+
+new Vue({
+    el: '#connect',
 })
