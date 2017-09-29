@@ -10,7 +10,8 @@
         .active {
             background: gray;
         }
-        .liked{
+
+        .liked {
             background: gray;
         }
     </style>
@@ -99,6 +100,14 @@
     <div id="connect">
         <huahua></huahua>
         <shuandan></shuandan>
+    </div>
+    <div id="filt">
+        <div>
+            <input type="text" v-model="price"> {{price|currency('USD')}}
+        </div>
+        <div>
+            <input type="text" v-model="length">mm {{length|meter}}
+        </div>
     </div>
 
     <script src="node_modules/vue/dist/vue.js"></script>
