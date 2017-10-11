@@ -14,6 +14,13 @@
         .liked {
             background: gray;
         }
+
+        .card {
+            width: 200px;
+            background: #ccc;
+            padding: 10px;
+            margin: 5px;
+        }
     </style>
 </head>
 
@@ -63,15 +70,21 @@
             <tbody>
                 <tr>
                     <td>数学</td>
-                    <td><input type="text" v-model.lazy='math'></td>
+                    <td>
+                        <input type="text" v-model.lazy='math'>
+                    </td>
                 </tr>
                 <tr>
                     <td>英语</td>
-                    <td><input type="text" v-model.lazy='english'></td>
+                    <td>
+                        <input type="text" v-model.lazy='english'>
+                    </td>
                 </tr>
                 <tr>
                     <td>物理</td>
-                    <td><input type="text" v-model.lazy='physics'></td>
+                    <td>
+                        <input type="text" v-model.lazy='physics'>
+                    </td>
                 </tr>
                 <tr>
                     <td>总分</td>
@@ -107,6 +120,20 @@
         </div>
         <div>
             <input type="text" v-model="length">mm {{length|meter}}
+        </div>
+    </div>
+    <div id="pin">
+        <div v-pin:true.top.left="card1.pinned" class="card">
+            <button @click="card1.pinned=!card1.pinned">钉住/取消</button>
+            Lorem ipsum dolor sit amet consectetur adipisicing.
+        </div>
+        <div v-pin.bottom.right="card2.pinned" class="card">
+            <button @click="card2.pinned=!card2.pinned">钉住/取消</button>
+            Lorem ipsum dolor sit amet consectetur adipisicing.
+        </div>
+        <div v-pin.top.right="card3.pinned" class="card">
+            <button @click="card3.pinned=!card3.pinned">钉住/取消</button>
+            Lorem ipsum dolor sit amet consectetur adipisicing.
         </div>
     </div>
 

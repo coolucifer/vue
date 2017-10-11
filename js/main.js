@@ -230,3 +230,41 @@ new Vue({
         length: 10
     }
 })
+
+//-----------custom-directive-------------
+Vue.directive('pin', function(el,binding){    //binding传递指令的值和基本信息
+    var pinned=binding.value;
+    var position=binding.modifiers;
+    var warning=binding.arg;
+
+    if(pinned){
+        el.style.position='fixed';
+
+        for(var key in position){
+            if(position[key]){
+                el.style[key]='10px';
+            }
+        }
+        if(warning==='true'){
+            el.style.background='yellow';
+        }
+    }else{
+        el.style.position='static';
+        el.style.background='#ccc';
+    }
+})
+
+new Vue({
+    el:'#pin',
+    data:{
+        card1:{
+            pinned:false,
+        },
+        card2:{
+            pinned:false,
+        },
+        card3:{
+            pinned:false,
+        },
+    }
+})
