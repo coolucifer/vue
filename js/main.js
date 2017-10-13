@@ -313,3 +313,13 @@ new Vue({
     el: '#mix',
     data: {}
 })
+
+//----------------插槽slots--------------
+Vue.component('panel',{
+    template:"#panel-tpl"
+});
+
+new Vue({
+    el:"#slot",
+    data:{}
+})
